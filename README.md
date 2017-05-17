@@ -1,4 +1,4 @@
- <img src="./IgniteFarbic.png" width=100% >
+ <img src="./images/IgniteFarbic.png" width=100% >
  
 # Apache-Ignite
 
@@ -28,6 +28,13 @@ I tested with following procedure [here:eyes:](https://apacheignite-fs.readme.io
 
 For increasing visual while testing I created several workers in spark.
 
+![bin/ignite.sh](images/ignite.png)
+*bin/ignite.sh*
 
-## configuration
+![bin/ignitevisorcmd.sh](images/visortop.png)
+*bin/ignitevisorcmd.sh*
+
+
+
+## Configuration
 
