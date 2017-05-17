@@ -17,12 +17,15 @@ I built my stack on both OS using the following option, replacing `adoop.version
 $ mvn clean package -DskipTests -Dignite.edition=hadoop [-Dhadoop.version=X.X.X]
 ```
 
-I tested with following procedure [here:eyes:](https://apacheignite-fs.readme.io/docs/testing-integration-with-spark-shell) here under in case the link is broken :
+I tested with following procedure [here:eyes:](https://apacheignite-fs.readme.io/docs/testing-integration-with-spark-shell)
+
+ :shit:[here]( Apaxhe-Ignite/TestingIgnite.md ) under in case the link is broken.
 
 
 
 
-For increasing visual 
+For increasing visual while testing I created several workers in spark.
+
 
 ## configuration
 
