@@ -1,5 +1,6 @@
- <img src="./IgniteFarbic.png" width=50% >
-  # Apache-Ignite
+ <img src="./IgniteFarbic.png" width=100% >
+ 
+# Apache-Ignite
 
 This section is dedicated to Apache Ignite [:mag:](https://ignite.apache.org/index.html)
 
