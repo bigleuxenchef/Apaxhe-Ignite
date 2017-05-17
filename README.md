@@ -1,5 +1,6 @@
-# Apache-Ignite
----
+ <img src="IgniteFabric.png" width=50% >
+  # Apache-Ignite
+
 This section is dedicated to Apache Ignite [:mag:](https://ignite.apache.org/index.html)
 
 Before starting the first step is to build a sand box to demonstrate the usage of Ignite. From an oldies: :older_man: like me having grown in the technology in the ealy 80ies, I always appreciate physical environemnt when possible over virtual. I have this mania to install everything from scratch even thouh I love mesos, docker:whale: and all the family :family:. However I like to climb to learn the system side of it, it has proven to me (THAT WORKS FOR ME, DOES NOT MEAN IT WORKS FOR YOU)in my long career that concepts are more profounded anchor that way.
