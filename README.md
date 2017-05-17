@@ -34,6 +34,8 @@ For increasing visual while testing I created several workers in spark.
 ![bin/ignitevisorcmd.sh](images/visortop.png)
 *bin/ignitevisorcmd.sh - command top to show two nodes*
 
+![bin/ignitevisorcmd.sh](images/visorcache.png)
+*bin/ignitevisorcmd.sh - Cache*
 
 
 ## Configuration
