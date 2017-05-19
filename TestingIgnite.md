@@ -13,10 +13,12 @@ Now that you have your cluster up and running, you can run spark-shell and check
 	--packages org.apache.ignite:ignite-spark:1.8.0
   --master spark://master_host:master_port
   --repositories http://repo.maven.apache.org/maven2/org/apache/ignite
-```
+  ```
+
     Or by providing paths to Ignite jar file paths using --jars parameter
 
     Shell
+    
 ```
 ./bin/spark-shell --jars path/to/ignite-core.jar,path/to/ignite-spark.jar,path/to/cache-api.jar,path/to/ignite-log4j.jar,path/to/log4j.jar --master spark://master_host:master_port
 ```
@@ -41,13 +43,16 @@ val ic = new IgniteContext(sc, () => new IgniteConfiguration())
 ```
 You should see something like
 
-    Text
+   Text
+    
 ```
 ic: org.apache.ignite.spark.IgniteContext = org.apache.ignite.spark.IgniteContext@62be2836
 ```
+
+
 An alternative way to create an instance of IgniteContext is to use a configuration file. Note that if path to configuration is specified in a relative form, then the IGNITE_HOME environment variable should be globally set in the system as the path is resolved relative to IGNITE_HOME
 
-    Scala
+   Scala
 ```
 import org.apache.ignite.spark._
 import org.apache.ignite.configuration._
@@ -60,9 +65,11 @@ val ic = new IgniteContext(sc, "config/default-config.xml")
 ```
 val sharedRDD = ic.fromCache[Integer, Integer]("partitioned")
 ```
+
 You should see an instance of RDD created for partitioned cache:
 
-    Text
+   Text
+    
 ```
 shareRDD: org.apache.ignite.spark.IgniteRDD[Integer,Integer] = IgniteRDD[0] at RDD at IgniteAbstractRDD.scala:27
 ```
@@ -103,3 +110,24 @@ Since we filled up cache with a sequence of number from 1 to 100000 inclusive, w
 res0: Long = 50000
 ```
    
+
+
+## My Specific
+
+after installing ignite in `/usr/local/Cellar/apache-ignite/1.9.0` and setting up `$IGNITE_HOME`, I have created a spark configuration file that works for me `myspark.conf` as follow :
+
+```
+spark.executor.memory 4g
+spark.executor.cores 4
+spark.driver.cores 1
+spark.num.executors 1
+spark.total.executor.cores 4
+spark.cores.max 8
+spark.driver.memory 4g
+spark.master spark://MBP15.local:7077
+```
+then you can start spark-shell
+
+```
+./bin/spark-shell --packages org.apache.ignite:ignite-spark:1.9.0,org.apache.ignite:ignite-spring:1.9.0 --master spark://mbp15.local:7077 --properties-file ~/myspark.conf 
+```
