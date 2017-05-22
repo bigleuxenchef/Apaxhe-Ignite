@@ -4,7 +4,6 @@ import org.apache.ignite.spark.{IgniteContext, IgniteRDD}
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.ignite.configuration._
-import org.apache.ignite.configuration._
 
 import scala.math
 
@@ -18,9 +17,11 @@ object MyFirstIgnite {
       val conf = new SparkConf()
         .setAppName("IgniteRDDExample")
         //.setMaster("master")
-        .setMaster("spark://localhost:7077")
+       //.setMaster("spark://rumi-mini.local:7077")
+        .setMaster("spark://mbp15.local:7077")
+
         .set("spark.executor.instances", "1")
-     val CONFIG = "/Users/rumi/Downloads/apache-ignite-1.9.0-src/examples/config/spark/example-shared-rdd.xml"
+     val CONFIG = "/usr/local/Cellar/apache-ignite/2.0.0/examples/config/spark/example-shared-rdd.xml"
 
     // Spark context.
     val sparkContext = new SparkContext(conf)
@@ -56,7 +57,7 @@ object MyFirstIgnite {
 
     // Filter out pairs which square roots are less than 100 and
     // take the first five elements from the transformed IgniteRDD and print them.
-    squareAndRootPair.filter(_._2 < 100.0).take(5).foreach(println)
+    squareAndRootPair.filter(_._2 < 100.0).take(10).foreach(println)
 
     println(">>> Executing SQL query over Ignite Shared RDD...")
 
@@ -68,7 +69,7 @@ object MyFirstIgnite {
 
     val sharedRDDDouble: IgniteRDD[Double, Double] = igniteContext.fromCache[Double, Double]("sharedRDD")
 
-  //  sharedRDDDouble.mapValues(x => sqrt(x))
+   sharedRDDDouble.mapValues(x => Math.sqrt(x))
 
     // Close IgniteContext on all workers.
     igniteContext.close(true)
