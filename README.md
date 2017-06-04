@@ -44,3 +44,32 @@ For increasing visual while testing I created several workers in spark.
 
 ## Configuration
 
+### spark-conf.sh
+
+```shell
+# Optionally set IGNITE_HOME here.
+# IGNITE_HOME=/path/to/ignite
+
+export IGNITE_VER=2.0.0
+export IGNITE_HOME=/usr/local/Cellar/apache-ignite/$IGNITE_VER
+
+IGNITE_LIBS="${IGNITE_HOME}/libs/*"
+
+for file in ${IGNITE_HOME}/libs/*
+do
+    if [ -d ${file} ] && [ "${file}" != "${IGNITE_HOME}"/libs/optional ]; then
+        IGNITE_LIBS=${IGNITE_LIBS}:${file}/*
+    fi
+done
+
+export SPARK_CLASSPATH=$SPARK_CLASSPATH:$IGNITE_LIBS
+```
+Note
+---
+when using spark 2.1.1 with ignite 2.0.0, the library of ignite will overwrite the spark ones, this works fine anyway.
+
+### Eclipse configuration
+
+include all spark jars and ignite in the build path with order ignite first before spark'one. Details of classpath [here:eyes:](MyFirstIgnite/.classpath)
+
+
