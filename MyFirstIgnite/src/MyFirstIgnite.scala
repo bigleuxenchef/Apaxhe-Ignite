@@ -37,18 +37,23 @@ object MyFirstIgnite {
 
     val conf = new SparkConf()
       .setAppName("IgniteRDDExample")
-      //.setMaster("master")
       //.setMaster("spark://rumi-mini.local:7077")
       .setMaster("spark://mbp15.local:7077")
-
-      .set("spark.executor.instances", "1")
+      .set("spark.executor.memory", "1g")
+      .set("spark.executor.cores", "8")
+      .set("spark.driver.cores", "1")
+      .set("spark.num.executors", "1")
+      .set("spark.total.executor.cores", "8")
+      .set("spark.cores.max", "8")
+      .set("spark.executor.instances", "4")
+      
     val CONFIG = "/usr/local/Cellar/apache-ignite/2.0.0/examples/config/spark/example-shared-rdd.xml"
 
     // Spark context.
     val sparkContext = new SparkContext(conf)
 
     // Adjust the logger to exclude the logs of no interest.
-    Logger.getRootLogger.setLevel(Level.ERROR)
+    Logger.getRootLogger.setLevel(Level.INFO)
     Logger.getLogger("org.apache.ignite").setLevel(Level.INFO)
 
     // Defines spring cache Configuration path.

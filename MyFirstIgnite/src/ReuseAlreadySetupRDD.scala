@@ -37,7 +37,6 @@ object ReuseAlreadySetupRDD {
 
     val conf = new SparkConf()
       .setAppName("IgniteRDDExample")
-      //.setMaster("master")
       //.setMaster("spark://rumi-mini.local:7077")
       .setMaster("spark://mbp15.local:7077")
 
@@ -73,16 +72,18 @@ object ReuseAlreadySetupRDD {
    
     
     // Execute a SQL query over the Ignite Shared RDD.
-    //val df = transformedValues.sql("select _val from Integer where _val < 100 and _val > 9 ")
-    val df = sharedRDD.sql("select _val from Integer where _val  < 9 ")
+    println(">>> Executing SQL query over Ignite Shared RDD...")
 
-    
+    val df = sharedRDD.sql("select _val from Integer where _val  < 9 ")
     
     // Show ten rows from the result set.
     df.show(10)
 
   
-  
+    println(">>> get access to value with specific key over Ignite Shared RDD...")
+
+    sharedRDD.lookup(1).foreach(println)
+        
     // Close IgniteContext on all workers.
     igniteContext.close(false)
 
